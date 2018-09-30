@@ -16,7 +16,7 @@ def parseFile(file):
     # Primeira linha -> Nome, estados, transicoes, estado inicial, estados finais
     args = lines[0].split('=')[1][1:-2]
     automato['nome'] = lines[0].split('=')[0]
-    estados, transicoes, inicial, finais = [x for x in ' '.join(' '.join(' '.join(args.split(',{')).split('}')).split('{')).split(' ') if x != '']
+    estados, transicoes, inicial, finais = re.findall(r'(?:\w+,)*\w+', args)
 
     # PARSE TRANSICOES
     automato['transicoes'] = transicoes.split(',')
@@ -31,7 +31,7 @@ def parseFile(file):
 
 
     # PARSE ESTADO INICIAL
-    automato['inicial'] = inicial[1:]
+    automato['inicial'] = inicial
 
     # PARSE ESTADOS FINAIS
     automato['finais'] = finais.split(',')
