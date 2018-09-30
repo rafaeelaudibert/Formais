@@ -1,3 +1,5 @@
+import re
+
 class Automato:
     '''
         Classe responsável por armazenar as informações do autômato e realizar as operações nele
@@ -18,7 +20,7 @@ class Automato:
         '''
             Determiniza um autômato não-determinístico SEM MOVIMENTOS VAZIOS
         '''
-        
+
         finais = []
         novosEstados = {}
         done = [] # Para evitar recursão infinita, iremos guardar onde já percorremos
@@ -88,7 +90,8 @@ class Automato:
             automato = self.determinizar()
 
         # Estado atual inicial e transicoes a serem feitas
-        atual, transicoes = automato.inicial, palavra.split(',')
+        regex = re.compile(",|\n")
+        atual, transicoes = automato.inicial, [x for x in regex.split(palavra) if x != ""]
 
         # Itera sobre as transicoes, e lida com rejeição por indefinição
         for transicao in transicoes:
