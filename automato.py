@@ -5,6 +5,13 @@ class Automato:
         Classe responsável por armazenar as informações do autômato e realizar as operações nele
     '''
     def __init__(self, args=None, deterministico=False):
+        '''
+            Inicialização do autômato.
+
+            :param args:           Parâmetros utilizados na inicialização do autômato.
+                                   É um dicionário com as seguintes chaves: 'nome', 'estados', 'transicoes', 'inicial' e 'finais'
+            :param deterministico: Pârametro que diz que se o autômato de entrada é determinístico ou não. Default: False
+        '''
         if args:
             self.nome = args['nome']
             self.estados = args['estados']
@@ -19,6 +26,9 @@ class Automato:
     def determinizar(self, override=False):
         '''
             Determiniza um autômato não-determinístico SEM MOVIMENTOS VAZIOS
+
+            :param override: Se for verdadeiro, sobrescreve o autômato atual.
+            :returns: Retorna um parâmetro determinizado. Se o parâmetro override for True, é o autômato atual. Caso contrário retorna uma outra instância de um autômato.
         '''
 
         finais = []
@@ -78,10 +88,12 @@ class Automato:
     ###############
 
 
-    def reconhecer(self, palavra):
+    def reconhece(self, palavra):
         '''
             Verifica se uma determinada palavra é reconhecida ou não pela linguagem que o autômato reconhece
-            @param palavra -> string separada por vírgulas, representando cada uma das transições
+
+            :param palavra: string separada por vírgulas, representando cada uma das transições
+            :returns: booleano simbolizando se a palavra é reconhecida pelo autômato ou não
         '''
 
         # Se o automato não for deterministico, cria um cópia determinizada
@@ -98,19 +110,22 @@ class Automato:
             try:
                 atual = automato.estados[atual][transicao]
             except KeyError: # Para por indefinição
-                return 'REJEITA'
+                return False
 
         # Após terminar de ler a palavra, caso esteja em um estado final, aceita a palavra, caso contrário, rejeita
         if atual in automato.finais:
-            return 'ACEITA'
+            return True
         else:
-            return 'REJEITA'
+            return False
 
 
     def __removeDuplicatas(self, array):
         '''
             Remove valores duplicados em uma array e a ordena
             i.e.: __removeDuplicatas([1,2,2,1,6,4]) => [1,2,4,6]
+
+            :param array: Array da qual serão removidas duplicatas
+            :returns: Array sem duplicatas e ordenada
         '''
         arrayNew = []
         for val in array:

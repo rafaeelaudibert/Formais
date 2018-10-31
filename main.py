@@ -5,7 +5,7 @@ import os
 def limpaTela(wait=True):
     if wait:
         input('Pressione ENTER para continuar...')
-    print("\x1b[2J\x1b[1;1H", end="")
+    os.system('cls' if os.name == 'nt' else 'clear')
 
     return
 
@@ -44,20 +44,26 @@ def parseFile(file):
     return automato
 
 def main():
-    file = open('automato.txt', 'r')
+    file = open(input('Digite o nome do arquivo que possui os dados do automato COM EXTENSAO: '), 'r')
     automato = Automato(parseFile(file))
     file.close()
+    print('Automato do arquivo:')
+    print(automato, end='\n\n')
     automato.determinizar(True)
-    print(automato.reconhecer('a,b,a,a,a'))
-    print(automato)
 
     while(True):
+        print()
+        print('Automato determinizado:')
+        print(automato, end='\n\n')
         option = input('1 -> Inserir nome de um arquivo do qual as palavras para teste serao lidas\n2 -> Inserir palavra a ser reconhecida manualmente\n3 -> Encerrar programa\nEscolha: ')
         if option == '1':
             limpaTela(False)
             palavras = open(input('Digite o nome do arquivo COM EXTENSAO: '), 'r', encoding="windows-1252")
             for line in palavras.readlines():
-                print(automato.reconhecer(line))
+                if automato.reconhece(line):
+                    print('ACEITA')
+                else:
+                    print('REJEITA')
             limpaTela()
         elif option == '2':
             while(True):
@@ -65,7 +71,10 @@ def main():
                 palavra = input('Insira a palavra separando as transicoes por virgula.\nCaso queira parar de inserir palavras, apenas pressione enter...\n')
                 if palavra == '':
                     break
-                print(automato.reconhecer(palavra))
+                if automato.reconhece(palavra):
+                    print('ACEITA')
+                else:
+                    print('REJEITA')
                 limpaTela()
             limpaTela(False)
         elif option == '3':
