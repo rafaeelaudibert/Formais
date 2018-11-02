@@ -21,7 +21,7 @@ class Automato:
             self.deterministico = deterministico
 
     def __str__(self):
-        return f'Automato: {self.nome}\nDeterministico? {str(self.deterministico)}\n{str(len(self.estados))} estados: {str(self.estados)}\n{str(self.__qtdTransicoes(self.estados))} transicoes: {str(self.transicoes)}\nEstado inicial: {self.inicial}\nEstados Finais: {str(self.finais)}'
+        return f'Automato: {self.nome}\nDeterministico? {str(self.deterministico)}\n{str(len(self.estados))} estados\n{str(self.__qtdTransicoes())} transicoes\nRepresentacao do Automato: {self.pprint_estados()}Estado inicial: {self.inicial}\nEstados Finais: {str(self.finais)}'
 
     def determinizar(self, override=False):
         '''
@@ -134,13 +134,24 @@ class Automato:
 
         return sorted(arrayNew)
 		
-    def __qtdTransicoes(self, estados):
+    def __qtdTransicoes(self):
         counter = 0
-        for e in estados:
-            for t in estados[e]:
-                if estados[e][t] != '' and estados[e][t] != []:
-                    if isinstance(estados[e][t], list):
-                        counter += len(estados[e][t])
+        for e in self.estados:
+            for t in self.estados[e]:
+                if self.estados[e][t] != '' and self.estados[e][t] != []:
+                    if isinstance(self.estados[e][t], list):
+                        counter += len(self.estados[e][t])
                     else:
                         counter += 1
         return counter
+		
+    def pprint_estados(self):
+
+        string = '\n'
+        for e in sorted(sorted(self.estados.keys()), key=lambda x: len(x)):
+            string += '{}: \t{}\n'.format(e, '{')
+            for t in sorted(self.estados[e].keys()):
+                if self.estados[e][t] != '' and self.estados[e][t] != []:
+                    string += "\t  {}: '{}',\n".format(t, self.estados[e][t])
+            string += ' \t{},\n'.format('}')
+        return string

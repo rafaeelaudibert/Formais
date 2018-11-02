@@ -43,19 +43,39 @@ def parseFile(file):
 
     return automato
 
-def main():
-    file = open(input('Digite o nome do arquivo que possui os dados do automato COM EXTENSAO: '), 'r')
+def inicializacao():
+    limpaTela(False)
+    while(True):
+        try:
+            file = open(input('Digite o nome do arquivo que possui os dados do automato COM EXTENSAO: '), 'r')
+            break
+        except FileNotFoundError:
+            limpaTela(False)
+            print('Esse arquivo não existe, digite um arquivo VÁLIDO!')			
+	
     automato = Automato(parseFile(file))
     file.close()
+	
+    limpaTela(False)
     print('Automato do arquivo:')
     print(automato, end='\n\n')
+    limpaTela()
+	
     automato.determinizar(True)
+    print('Automato determinizado:')
+    print(automato, end='\n\n')
+    limpaTela()
+	
+	
+    return automato
+	
+	
+def main():
+	
+    automato = inicializacao()    
 
-    while(True):
-        print()
-        print('Automato determinizado:')
-        print(automato, end='\n\n')
-        option = input('1 -> Inserir nome de um arquivo do qual as palavras para teste serao lidas\n2 -> Inserir palavra a ser reconhecida manualmente\n3 -> Encerrar programa\nEscolha: ')
+    while(True):        
+        option = input('ESCOLHA UMA DAS OPCOES:\n\n1 -> Inserir nome de um arquivo do qual as palavras para teste serao lidas\n2 -> Inserir palavra a ser reconhecida manualmente\n3 -> Escolher novo autômato\n4 -> Visualizar autômato\n5 -> Encerrar programa\nEscolha: ')
         if option == '1':
             limpaTela(False)
             palavras = open(input('Digite o nome do arquivo COM EXTENSAO: '), 'r', encoding="windows-1252")
@@ -78,6 +98,12 @@ def main():
                 limpaTela()
             limpaTela(False)
         elif option == '3':
+            automato = inicializacao()		
+        elif option == '4':
+            limpaTela(False)
+            print(automato, end='\n\n')
+            limpaTela()
+        elif option == '5':
             limpaTela(False)
             print('====================\nENCERRANDO PROGRAMA\n====================')
             break;
