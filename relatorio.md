@@ -61,15 +61,3 @@ No arquivo *input.txt* que está na mesma pasta que essa, estão 10 palavras a s
 
 # AFN formatado (3.5)
 O AFN capaz de reconhecer a linguagem descrita acima, formatado de acordo com a especificação do trabalho se encontra no arquivo *whatsapp.txt* localizado na mesma pasta que esse arquivo se encontra.
-
-# Como utilizar o código reconhecedor
-Chame ```python3 main.py``` e preencha as informações solicitadas. A primeira informação solicitada é o nome do arquivo que possui o autômato (o arquivo já disponibilizado se chama *whatsapp.txt*). Ele deverá possuir o formato abaixo:
-```
-NomeAutomato=({estadosSeparadosPorVirgula},{TransicoesSeparadasPorVirgulas},estadoInicial,{estadosFinaisSeparadosPorVirgula})
-Prog
-(estadoAtual,transicao)=estadoFuturo
-(estadoAtual,transicao)=estadoFuturo
-(estadoAtual,transicao)=estadoFuturo
-(estadoAtual,transicao)=estadoFuturo
-...
-```

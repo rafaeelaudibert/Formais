@@ -21,7 +21,7 @@ class Automato:
             self.deterministico = deterministico
 
     def __str__(self):
-        return f'Automato: {self.nome}\nDeterministico? {str(self.deterministico)}\nEstados: {str(self.estados)}\nTransicoes: {str(self.transicoes)}\nEstado inicial: {self.inicial}\nEstados Finais: {str(self.finais)}'
+        return f'Automato: {self.nome}\nDeterministico? {str(self.deterministico)}\n{str(len(self.estados))} estados: {str(self.estados)}\n{str(self.__qtdTransicoes(self.estados))} transicoes: {str(self.transicoes)}\nEstado inicial: {self.inicial}\nEstados Finais: {str(self.finais)}'
 
     def determinizar(self, override=False):
         '''
@@ -133,3 +133,14 @@ class Automato:
                 arrayNew.append(val)
 
         return sorted(arrayNew)
+		
+    def __qtdTransicoes(self, estados):
+        counter = 0
+        for e in estados:
+            for t in estados[e]:
+                if estados[e][t] != '' and estados[e][t] != []:
+                    if isinstance(estados[e][t], list):
+                        counter += len(estados[e][t])
+                    else:
+                        counter += 1
+        return counter
