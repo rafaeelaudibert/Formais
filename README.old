@@ -14,7 +14,7 @@ O trabalho também poderá ser encontrado no [Github](https://github.com/rafaeel
 
 Para construção dessa linguagem nos baseamos no aplicativo [Whatsapp](https://www.whatsapp.com/) na sua versão para Android, que pode ser encontrada [aqui](https://play.google.com/store/apps/details?id=com.whatsapp).
 
-Formalmente, o alfabeto da linguagem é definido como Σ = {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w}, onde para cada símbolo (letra do alfabeto), há a seguinte definição semântica na representação de transições do AFN:
+Temos como alfabeto da linguagem, os seguintes símbolos, seguidos da representação que terão quando representados como transições no AFN:
 
 * *AbrirCamera* -> **a**
 * *AbrirCameraConversa* -> **b**
@@ -39,51 +39,6 @@ Formalmente, o alfabeto da linguagem é definido como Σ = {a,b,c,d,e,f,g,h,i,j,
 * *VisualizarProprioStatus* -> **u**
 * *VisualizarStatus* -> **v**
 * *Voltar* -> **w**
-
-A definição formal da linguagem pode ser feita da seguinte forma (para facilitar o entendimento, foi utilizado estados do autômato correspondente na definição):
-
-L = {
-* No estado inicial, *TelaConversas*, aceita-se apenas
-  * **e**, transicionando para *Conversa*
-  * **h**, transicionando para *Status*
-  * **d**, transicionando para *Chamadas*
-  * **a** ou **w**, transicionando para *Camera*
-* No estado *Conversa*, aceita-se apenas
-  * **l**, **m**, **n**, **o**, **p**, **q**, autotransicionando para *Conversa*
-  * **w**, transicionando para *TelaConversas*
-  * **q**, transicionando para *CameraConversa*
-  * **f**, transicionando para *InfoConversa*
-* No estado *CameraConversa*, aceita-se apenas
-  * **p**, **w**, transicionando para *Conversa*
-* No estado *InfoConversa*, aceita-se apenas
-  * **w**, transicionando para *Conversa*
-  * **q**, transicionando para *VisualizaçãoMidia*
-* No estado *VisualizaçãoMidia*, aceita-se apenas
-  * **w**, transicionando para *InfoConversa*
-* No estado *Chamadas*, aceita-se apenas
-  * **w**, transicionando para *TelaConversas*
-  * **r**, transicionando para *Chamada*
-  * **a**, transicionando para *Camera*
-* No estado *Chamada*, aceita-se apenas
-  * **k**, transicionando para *Chamadas*
-* No estado *Camera*, aceita-se apenas
-  * **t**, transicionando para *Foto*
-* No estado *Foto*, aceita-se apenas
-  * **p**, transicionando para *Conversa*
-  * **i**, transicionando para *TelaConversas*
-  * **w**, transicionando para *Camera*
-* No estado *Status*, aceita-se apenas
-  * **u**, **v**, transicionando para *VisualizaçãoStatus*
-  * **u**, **c**, transicionando para *CameraStatus*
-  * **a**, transicionando para *Camera*
-* No estado *VisualizaçãoStatus*, aceita-se apenas
-  * **s**, **i**, autotransicionando para *VisualizaçãoStatus*
-  * **j**, **w** transicionando para *Status*
-* No estado *CameraStatus*, aceita-se apenas
-  * **w**, **i**, transicionando para *Status*
-
-}
-
 As transições possíveis para essa gramática podem ser vistas no autômato disponibilizado no item *AFN(3.4)* abaixo.
 
 # AFN (3.4)
