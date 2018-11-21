@@ -43,44 +43,44 @@ Formalmente, o alfabeto da linguagem é definido como Σ = {a,b,c,d,e,f,g,h,i,j,
 A definição formal da linguagem pode ser feita da seguinte forma (para facilitar o entendimento, foi utilizado estados do autômato correspondente na definição):
 
 L = {
-* No estado inicial, *TelaConversas*, aceita-se apenas
-  * **e**, transicionando para *Conversa*
-  * **h**, transicionando para *Status*
-  * **d**, transicionando para *Chamadas*
-  * **a** ou **w**, transicionando para *Camera*
-* No estado *Conversa*, aceita-se apenas
-  * **l**, **m**, **n**, **o**, **p**, **q**, autotransicionando para *Conversa*
-  * **w**, transicionando para *TelaConversas*
-  * **q**, transicionando para *CameraConversa*
-  * **f**, transicionando para *InfoConversa*
-* No estado *CameraConversa*, aceita-se apenas
-  * **p**, **w**, transicionando para *Conversa*
-* No estado *InfoConversa*, aceita-se apenas
-  * **w**, transicionando para *Conversa*
-  * **q**, transicionando para *VisualizaçãoMidia*
-* No estado *VisualizaçãoMidia*, aceita-se apenas
-  * **w**, transicionando para *InfoConversa*
-* No estado *Chamadas*, aceita-se apenas
-  * **w**, transicionando para *TelaConversas*
-  * **r**, transicionando para *Chamada*
-  * **a**, transicionando para *Camera*
-* No estado *Chamada*, aceita-se apenas
-  * **k**, transicionando para *Chamadas*
-* No estado *Camera*, aceita-se apenas
-  * **t**, transicionando para *Foto*
-* No estado *Foto*, aceita-se apenas
-  * **p**, transicionando para *Conversa*
-  * **i**, transicionando para *TelaConversas*
-  * **w**, transicionando para *Camera*
-* No estado *Status*, aceita-se apenas
-  * **u**, **v**, transicionando para *VisualizaçãoStatus*
-  * **u**, **c**, transicionando para *CameraStatus*
-  * **a**, transicionando para *Camera*
-* No estado *VisualizaçãoStatus*, aceita-se apenas
-  * **s**, **i**, autotransicionando para *VisualizaçãoStatus*
-  * **j**, **w** transicionando para *Status*
-* No estado *CameraStatus*, aceita-se apenas
-  * **w**, **i**, transicionando para *Status*
+* Após combinações de letras do alfabeto para chegar na tela de *Conversas*, aceita-se apenas
+  * **e**, transicionando para a tela de *Conversa*
+  * **h**, transicionando para a tela de *Status*
+  * **d**, transicionando para a tela de *Chamadas*
+  * **a** ou **w**, transicionando para a tela de *Camera*
+* Após combinações de letras do alfabeto para chegar na tela de *Conversa*, aceita-se apenas
+  * **l**, **m**, **n**, **o**, **p**, **q**, autotransicionando a tela de *Conversa*
+  * **w**, transicionando para a tela de *Conversas*
+  * **q**, transicionando para a tela de *Camera da Conversa*
+  * **f**, transicionando para a tela de *Info da Conversa*
+* Após combinações de letras do alfabeto para chegar na tela de *Camera da Conversa*, aceita-se apenas
+  * **p**, **w**, transicionando para a tela de *Conversa*
+* Após combinações de letras do alfabeto para chegar na tela de *Info da Conversa*, aceita-se apenas
+  * **w**, transicionando para a tela de *Conversa*
+  * **q**, transicionando para a tela de *Visualização de Midia*
+* Após combinações de letras do alfabeto para chegar na tela de *Visualização de Midia*, aceita-se apenas
+  * **w**, transicionando para a tela de *InfoConversa*
+* Após combinações de letras do alfabeto para chegar na tela de *Chamadas*, aceita-se apenas
+  * **w**, transicionando para a tela de *Conversas*
+  * **r**, transicionando para a tela de *Chamada*
+  * **a**, transicionando para a tela de *Camera*
+* Após combinações de letras do alfabeto para chegar na tela de *Chamada*, aceita-se apenas
+  * **k**, transicionando para a tela de *Chamadas*
+* Após combinações de letras do alfabeto para chegar na tela de *Camera*, aceita-se apenas
+  * **t**, transicionando para a tela de *Tirar Foto*
+* Após combinações de letras do alfabeto para chegar na tela de *Tirar Foto*, aceita-se apenas
+  * **p**, transicionando para a tela de *Conversa*
+  * **i**, transicionando para a tela de *Tela de Conversas*
+  * **w**, transicionando para a tela de *Camera*
+* Após combinações de letras do alfabeto para chegar na tela de *Status*, aceita-se apenas
+  * **u**, **v**, transicionando para a tela de *Visualização de Status*
+  * **u**, **c**, transicionando para a tela de *Camera do Status*
+  * **a**, transicionando para a tela de *Camera*
+* Após combinações de letras do alfabeto para chegar na tela de *Visualização de Status*, aceita-se apenas
+  * **s**, **i**, autotransicionando para a tela de *Visualização de Status*
+  * **j**, **w** transicionando para a tela de *Status*
+* Após combinações de letras do alfabeto para chegar na tela de *Camera do Status*, aceita-se apenas
+  * **w**, **i**, transicionando para a tela de *Status*
 
 }
 
