@@ -59,7 +59,7 @@ L = {
   * **w**, transicionando para a tela de *Conversa*
   * **q**, transicionando para a tela de *Visualização de Midia*
 * Após combinações de letras do alfabeto para chegar na tela de *Visualização de Midia*, aceita-se apenas
-  * **w**, transicionando para a tela de *InfoConversa*
+  * **w**, transicionando para a tela de *Info da Conversa*
 * Após combinações de letras do alfabeto para chegar na tela de *Chamadas*, aceita-se apenas
   * **w**, transicionando para a tela de *Conversas*
   * **r**, transicionando para a tela de *Chamada*
