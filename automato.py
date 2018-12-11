@@ -113,10 +113,8 @@ class Automato:
                 return False
 
         # Após terminar de ler a palavra, caso esteja em um estado final, aceita a palavra, caso contrário, rejeita
-        if atual in automato.finais:
-            return True
-        else:
-            return False
+        return atual in automato.finais
+
 
 
     def __removeDuplicatas(self, array):
@@ -133,7 +131,7 @@ class Automato:
                 arrayNew.append(val)
 
         return sorted(arrayNew)
-		
+
     def __qtdTransicoes(self):
         counter = 0
         for e in self.estados:
@@ -144,7 +142,7 @@ class Automato:
                     else:
                         counter += 1
         return counter
-		
+
     def pprint_estados(self):
 
         string = '\n'
